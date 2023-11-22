@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  apiKey: process.env.FB_APIKEY,
-  authDomain: process.env.FB_AUTHDOMAIN,
-  projectId: process.env.FB_PROJECTID,
-  storageBucket: process.env.FB_MESSAGINGSENDERID,
-  messagingSenderId: process.env.FB_MESSAGINGSENDERID,
-  appId: process.env.FB_APPID,
+  apiKey: process.env.NEXT_PUBLIC_FB_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_FB_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FB_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_FB_MESSAGINGSENDERID,
+  messagingSenderId: process.env.NEXT_PUBLIC_FB_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_FB_APPID,
 };
