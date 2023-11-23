@@ -13,11 +13,16 @@ export default function Message({ message, isOwnMessage }) {
         isOwnMessage ? styles.self : styles.other
       }`}
     >
-      <img
-        src={message?.user.photoURL || randomAvatar}
-        alt={message?.user.displayName || ""}
-        className={styles.avatar}
-      />
+      <div className={styles.header}>
+        <img
+          src={message?.user.photoURL || randomAvatar}
+          alt={message?.user.displayName || ""}
+          className={styles.avatar}
+        />
+        <p className={styles.name}>
+          {message.user.displayName?.split(" ")[0] || ""}
+        </p>
+      </div>
       <div>
         <h6>{message.content}</h6>
         <p>
