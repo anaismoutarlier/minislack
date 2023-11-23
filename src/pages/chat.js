@@ -1,15 +1,24 @@
 import { RaisedButton, Message } from "@/components";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "@/firebase";
 import { useRouter } from "next/router";
 
 export default function Chat() {
   const router = useRouter();
-  const { user, logout } = useContext(FirebaseContext);
+  const { user, logout, addMessage, messages } = useContext(FirebaseContext);
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     if (!user) router.push("/login");
   }, [user]);
+
+  const handleChange = e => setContent(e.target.value);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const res = await addMessage(content);
+    if (res) setContent("");
+  };
 
   return (
     <div className="chat container">
@@ -29,33 +38,20 @@ export default function Chat() {
       </div>
       <div className="content">
         <div className="message-container">
-          <Message
-            message={{
-              content: "Hello there",
-              sentAt: Date.now() - 400000,
-              user: {
-                id: 1,
-                displayName: "Anais Moutarlier",
-                photoURL: "",
-              },
-            }}
-            isOwnMessage={true}
-          />
-          <Message
-            message={{
-              content: "Welcome to MiniSlack",
-              sentAt: Date.now() - 2000,
-              user: {
-                id: 1,
-                displayName: "Anais Moutarlier",
-                photoURL: "",
-              },
-            }}
-            isOwnMessage={false}
-          />
+          {messages.map(message => (
+            <Message
+              key={message.id}
+              message={message}
+              isOwnMessage={message.user.uid === user.uid}
+            />
+          ))}
         </div>
-        <form className="input-container">
-          <input placeholder="Enter your message here" />
+        <form className="input-container" onSubmit={handleSubmit}>
+          <input
+            placeholder="Enter your message here"
+            onChange={handleChange}
+            value={content}
+          />
           <RaisedButton type="submit">SEND</RaisedButton>
         </form>
       </div>

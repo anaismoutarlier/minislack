@@ -12,8 +12,11 @@ export default function Login() {
 
   return (
     <div className="login container">
-      <RaisedButton size="large" onClick={login}>
-        LOGIN
+      <RaisedButton size="large" onClick={() => login("google")}>
+        GOOGLE LOGIN
+      </RaisedButton>
+      <RaisedButton size="large" onClick={() => login("facebook")}>
+        FACEBOOK LOGIN
       </RaisedButton>
     </div>
   );
