@@ -8,7 +8,7 @@ To get started with this project,
 
 2. Within your project, create an application using the _Web App_ option (**</>**).
 
-3. Copy the configuration for your application into the `.env.local.example` file.
+3. Copy the configuration for your application into the `.env.local.example` file. Rename the file as `.env.local`.
 
 4. Enable the _Authentication_ module for the project and select the Google provider. (Optional: Add the Facebook provider and configure your Facebook account in the [Meta developer's console](https://developers.facebook.com/)).
 
