@@ -24,6 +24,8 @@ export default function Chat() {
     setMessageText("");
   };
 
+  if (!user) return null;
+
   return (
     <div className="chat container">
       <div className="sider">

@@ -7,6 +7,7 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signOut,
 } from "firebase/auth";
 import {
@@ -19,7 +20,10 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-const googleProvider = new GoogleAuthProvider();
+const providers = {
+  google: new GoogleAuthProvider(),
+  facebook: new FacebookAuthProvider(),
+};
 
 export default function App({ Component, pageProps }) {
   const [auth, setAuth] = useState(null);
@@ -66,8 +70,8 @@ export default function App({ Component, pageProps }) {
     }
   }, [db]);
 
-  const signin = async () => {
-    await signInWithPopup(auth, googleProvider);
+  const signin = async (provider = "google") => {
+    await signInWithPopup(auth, providers[provider.toLowerCase()]);
   };
 
   const signout = async () => {
