@@ -19,7 +19,7 @@ export default function Message({ message, isOwnMessage }) {
         className={styles.avatar}
       />
       <div>
-        <h6>{message.content}</h6>
+        <h6>{message.text}</h6>
         <p>
           {String(sentAt.getHours())}h
           {String(sentAt.getMinutes()).padStart(2, 0)}
