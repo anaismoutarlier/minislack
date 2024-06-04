@@ -25,7 +25,6 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     if (auth) {
       const unsubscribe = auth.onAuthStateChanged(authUser => {
-        console.log("in event listener", authUser);
         setUser(authUser);
       });
 

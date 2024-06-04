@@ -15,12 +15,12 @@ export default function Chat() {
       <div className="sider">
         <div>
           <img
-            src="/avatar.png"
-            alt="Anais Moutarlier"
+            src={user.photoURL}
+            alt={user.displayName}
             className="sider-avatar"
           />
-          <h2>Anais Moutarlier</h2>
-          <h3>anaismoutarlier@gmail.com</h3>
+          <h2>{user.displayName}</h2>
+          <h3>{user.email}</h3>
         </div>
         <RaisedButton onClick={signout}>LOGOUT</RaisedButton>
       </div>
